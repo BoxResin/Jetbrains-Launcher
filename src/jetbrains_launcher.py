@@ -9,8 +9,6 @@ ANDROID_STUDIO_PATH = 'C:/Program Files/Android/Android Studio/bin/studio64.exe'
 INTELLIJ_PATH = 'C:/Program Files (x86)/JetBrains/IntelliJ IDEA Community Edition 2016.3.4/bin/idea64.exe'
 PYCHARM_PATH = 'C:/Program Files (x86)/JetBrains/PyCharm Community Edition 2016.3.2/bin/pycharm64.exe'
 
-_TIME_TO_SLEEP_SEC = 2.5
-
 
 def is_android_studio_project(path: str) -> bool:
     """
@@ -61,7 +59,7 @@ if len(sys.argv) == 2:
 
         # Open the project.
         if ANDROID_STUDIO_PATH != '' and is_android_studio_project(project_path):
-            time.sleep(_TIME_TO_SLEEP_SEC)
+            time.sleep(2.5)
             ide_path = ANDROID_STUDIO_PATH
             project_type = 'Android Studio'
 
@@ -80,4 +78,4 @@ if len(sys.argv) == 2:
 
     except Exception as e:
         print(e)
-        time.sleep(_TIME_TO_SLEEP_SEC)
+        time.sleep(2.5)
