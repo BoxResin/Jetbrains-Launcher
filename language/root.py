@@ -8,5 +8,5 @@ MSG = {
 
     # Installer 메시지
     'PAGE_PATH_INPUT_TITLE': 'Jetbrains IDE와 연결',
-    'PAGE_PATH_INPUT_SUBTITLE': '다음 프로그램의 exe 파일 경로를 입력해주세요.$\nPython Interpreter은 필수 입력 내용이며, 나머지는 옵션입니다.',
+    'PAGE_PATH_INPUT_SUBTITLE': '다음 프로그램의 exe 파일 경로를 입력해주세요.$\\nPython Interpreter은 필수 입력 내용이며, 나머지는 옵션입니다.',
 }

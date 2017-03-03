@@ -9,5 +9,5 @@ MSG = {
 
     # Installer messages
     'PAGE_PATH_INPUT_TITLE': 'Connecting to Jetbrains IDE',
-    'PAGE_PATH_INPUT_SUBTITLE': "Please input the following program's exe file.$\nThe Python Interpreter is essential, others are optional.",
+    'PAGE_PATH_INPUT_SUBTITLE': "Please input the following program's exe file.$\\nThe Python Interpreter is essential, others are optional.",
 }
