@@ -3,7 +3,7 @@ import os.path
 import subprocess
 import time
 import glob
-from language.EN_US import *
+from language.KO_KR import *
 
 ANDROID_STUDIO_PATH = 'C:/Program Files/Android/Android Studio/bin/studio64.exe'
 INTELLIJ_PATH = 'C:/Program Files (x86)/JetBrains/IntelliJ IDEA Community Edition 2016.3.4/bin/idea64.exe'
@@ -59,7 +59,6 @@ if len(sys.argv) == 2:
 
         # Open the project.
         if ANDROID_STUDIO_PATH != '' and is_android_studio_project(project_path):
-            time.sleep(2.5)
             ide_path = ANDROID_STUDIO_PATH
             project_type = 'Android Studio'
 
