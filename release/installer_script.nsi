@@ -8,6 +8,11 @@
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 
+Var PythonPath
+Var IntelliJPath
+Var AndroidStudioPath
+Var PycharmPath
+
 SetCompressor lzma
 
 ; MUI 1.67 compatible ------
@@ -28,7 +33,7 @@ SetCompressor lzma
 !insertmacro MUI_PAGE_WELCOME
 ; Path input page
 ;Page custom PathInput
-Page custom fnc_path_input_Show
+Page custom fnc_path_input_Show PathInputLeave
 ; Directory page
 !insertmacro MUI_PAGE_DIRECTORY
 ; Instfiles page
@@ -72,10 +77,12 @@ FunctionEnd
   
 ;FunctionEnd
 
-;Function PathInputLeave
-;  !insertmacro MUI_INSTALLOPTIONS_READ $R0 "option.ini" "Field 1" "State"
-;  MessageBox MB_OK $R0
-;FunctionEnd
+Function PathInputLeave
+  ${NSD_GetText} $hCtl_path_input_PythonInterpreter_Txt $PythonPath
+  ${NSD_GetText} $hCtl_path_input_IntelliJ_Txt $IntelliJPath
+  ${NSD_GetText} $hCtl_path_input_AndroidStudio_Txt $AndroidStudioPath
+  ${NSD_GetText} $hCtl_path_input_Pycharm_Txt $PycharmPath
+FunctionEnd
 
 Section "MainSection" SEC01
   ; Overwrite if same files exist.
@@ -85,17 +92,31 @@ Section "MainSection" SEC01
   SetOutPath "$INSTDIR\"
   File "icon.ico"
   
+  ; Create run.bat file.
+  FileOpen $4 "run.bat" w
+  FileWrite $4 '@echo off$\nset PYTHONPATH=$INSTDIR $\n"$PythonPath" "$INSTDIR\script\jetbrains_launcher.py" %1'
+  FileClose $4
+  
+  ; Write ini file.
+  WriteINIStr ".\prefs.ini" "Path" "PYTHON" $PythonPath
+  WriteINIStr ".\prefs.ini" "Path" "INTELLIJ" $IntelliJPath
+  WriteINIStr ".\prefs.ini" "Path" "ANDROID_STUDIO" $AndroidStudioPath
+  WriteINIStr ".\prefs.ini" "Path" "PYCHARM" $PycharmPath
+  FlushINI ".\prefs.ini"
+  
   SetOutPath "$INSTDIR\language"
   File "..\language\*"
   
   SetOutPath "$INSTDIR\script"
   File "..\script\*"
   
-  ;Write registries.
+  ; Write registries.
   WriteRegStr HKCR "Directory\shell\JetbrainLauncher" "" $(MENU_TITLE)
   WriteRegStr HKCR "Directory\Background\shell\JetbrainLauncher" "" $(MENU_TITLE)
   WriteRegStr HKCR "Directory\shell\JetbrainLauncher" "Icon" "$INSTDIR\icon.ico"
   WriteRegStr HKCR "Directory\Background\shell\JetbrainLauncher" "Icon" "$INSTDIR\icon.ico"
+  WriteRegStr HKCR "Directory\shell\JetbrainLauncher\command" "" '"$INSTDIR\run.bat" %V'
+  WriteRegStr HKCR "Directory\Background\shell\JetbrainLauncher\command" "" '"$INSTDIR\run.bat" %V'
 SectionEnd
 
 Section -AdditionalIcons

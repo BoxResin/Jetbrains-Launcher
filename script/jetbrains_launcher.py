@@ -3,11 +3,17 @@ import os.path
 import subprocess
 import time
 import glob
-from language.KO_KR import *
+import configparser
+from language.KO import MSG
 
-ANDROID_STUDIO_PATH = 'C:/Program Files/Android/Android Studio/bin/studio64.exe'
-INTELLIJ_PATH = 'C:/Program Files (x86)/JetBrains/IntelliJ IDEA Community Edition 2016.3.4/bin/idea64.exe'
-PYCHARM_PATH = 'C:/Program Files (x86)/JetBrains/PyCharm Community Edition 2016.3.2/bin/pycharm64.exe'
+# Read preferences.
+config = configparser.ConfigParser()
+config.read(os.path.dirname(__file__) + '/../prefs.ini')
+
+PYTHON_PATH = config['Path']['PYTHON']
+INTELLIJ_PATH = config['Path']['INTELLIJ']
+ANDROID_STUDIO_PATH = config['Path']['ANDROID_STUDIO']
+PYCHARM_PATH = config['Path']['PYCHARM']
 
 
 def is_android_studio_project(path: str) -> bool:
@@ -55,7 +61,7 @@ if len(sys.argv) == 2:
         project_path = sys.argv[1]
 
         if not os.path.exists(project_path + '\\.idea'):
-            raise Exception(MSG_INVALID_JETBRAINS_PROJECT)
+            raise Exception(MSG['INVALID_JETBRAINS_PROJECT'])
 
         # Open the project.
         if ANDROID_STUDIO_PATH != '' and is_android_studio_project(project_path):
@@ -70,9 +76,9 @@ if len(sys.argv) == 2:
             ide_path = PYCHARM_PATH
             project_type = 'Pycharm'
 
-        else: raise Exception(MSG_UNKNOWN_JETBRAINS_PROJECT)
+        else: raise Exception(MSG['UNKNOWN_JETBRAINS_PROJECT'])
 
-        print(MSG_OPENING_IDE.format(project_path, project_type))
+        print(MSG['OPENING_IDE'].format(project_path, project_type))
         subprocess.call(ide_path + ' ' + project_path)
 
     except Exception as e:
