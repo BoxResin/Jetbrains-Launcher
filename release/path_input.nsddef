@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This file was created by NSISDialogDesigner 1.4.2.0
+http://coolsoft.altervista.org/nsisdialogdesigner
+Do not edit manually!
+-->
+<Dialog Name="path_input" Title="$(PAGE_PATH_INPUT_TITLE)" Subtitle="$(PAGE_PATH_INPUT_SUBTITLE)">
+  <FileRequest Name="Pycharm" Location="148, 149" Size="343, 20" TabIndex="0" />
+  <FileRequest Name="AndroidStudio" Location="148, 109" Size="343, 20" TabIndex="1" />
+  <FileRequest Name="IntelliJ" Location="148, 69" Size="343, 20" TabIndex="2" />
+  <FileRequest Name="PythonInterpreter" Location="148, 29" Size="343, 20" TabIndex="3" />
+  <Label Name="Label4" Location="24, 152" Size="115, 18" Text="Pycharm" TabIndex="4" />
+  <Label Name="Label3" Location="24, 112" Size="115, 18" Text="Android Studio" TabIndex="5" />
+  <Label Name="Label2" Location="24, 72" Size="115, 18" Text="IntelliJ" TabIndex="6" />
+  <Label Name="Label1" Location="24, 32" Size="115, 18" Text="Python Interpreter" TabIndex="7" />
+</Dialog>
