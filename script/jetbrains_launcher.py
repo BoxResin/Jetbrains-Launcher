@@ -4,16 +4,34 @@ import subprocess
 import time
 import glob
 import configparser
-from language.KO import MSG
+import importlib
 
 # Read preferences.
 config = configparser.ConfigParser()
 config.read(os.path.dirname(__file__) + '/../prefs.ini')
 
+LANGUAGE_NUM = config['Others']['LANGUAGE']
 PYTHON_PATH = config['Path']['PYTHON']
 INTELLIJ_PATH = config['Path']['INTELLIJ']
 ANDROID_STUDIO_PATH = config['Path']['ANDROID_STUDIO']
 PYCHARM_PATH = config['Path']['PYCHARM']
+
+# Load language resources.
+if LANGUAGE_NUM == '1042':
+    # from language.KO import MSG
+    # DEFAULT_LANG = __import__('language.KO')
+    DEFAULT_LANG = importlib.import_module('language.KO')
+    print('한국어')
+elif LANGUAGE_NUM == '1033':
+    # from language.EN_US import MSG
+    # DEFAULT_LANG = __import__('language.EN_US')
+    DEFAULT_LANG = importlib.import_module('language.EN_US')
+    print('English')
+else:
+    # from language.root import MSG
+    # DEFAULT_LANG = __import__('language.root')
+    DEFAULT_LANG = importlib.import_module('language.root')
+MSG = DEFAULT_LANG.MSG
 
 
 def is_android_studio_project(path: str) -> bool:

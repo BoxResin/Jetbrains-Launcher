@@ -102,6 +102,7 @@ Section "MainSection" SEC01
   WriteINIStr ".\prefs.ini" "Path" "INTELLIJ" $IntelliJPath
   WriteINIStr ".\prefs.ini" "Path" "ANDROID_STUDIO" $AndroidStudioPath
   WriteINIStr ".\prefs.ini" "Path" "PYCHARM" $PycharmPath
+  WriteINIStr ".\prefs.ini" "Others" "LANGUAGE" $LANGUAGE
   FlushINI ".\prefs.ini"
   
   SetOutPath "$INSTDIR\language"
