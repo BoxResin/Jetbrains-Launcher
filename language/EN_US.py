@@ -1,4 +1,5 @@
-# Edit this file to create English translations
+# Edit this file to create English translations.
+# This translations are only for v1.0.0-alpha.
 from language.root import MSG
 
 _LOCAL_MSG = {
