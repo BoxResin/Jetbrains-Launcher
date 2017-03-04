@@ -1,3 +1,4 @@
+# Write release/lang.nsh file.
 fp = open('release/lang.nsh', 'w')
 
 fp.write('; Korean Support\n')
@@ -14,3 +15,9 @@ for key, value in MSG.items():
     fp.write('LangString %s ${LANG_ENGLISH} "%s"\n' % (key, value))
 
 fp.close()
+
+
+# Build a NSIS installer
+import subprocess
+subprocess.call('"C:/Program Files (x86)/NSIS/makensis.exe" release/installer_script.nsi')
+#
