@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "Jetbrains Launcher"
-!define PRODUCT_VERSION "v1.0.0"
+!define PRODUCT_VERSION "v1.0.0-alpha"
 !define PRODUCT_PUBLISHER "Minsuk Eom"
 !define PRODUCT_WEB_SITE "https://github.com/BoxResin/Jetbrains-Launcher"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
