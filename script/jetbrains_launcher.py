@@ -83,8 +83,13 @@ if len(sys.argv) == 2:
 
         else: raise Exception(MSG['UNKNOWN_JETBRAINS_PROJECT'])
 
+        # If there is 'init.py', run that.
+        if os.path.exists(project_path + '\\init.py'):
+            subprocess.Popen('"%s" "%s\\init.py"' % (PYTHON_PATH, project_path))
+            # init_script.terminate()
+
         print(MSG['OPENING_IDE'].format(project_path, project_type))
-        subprocess.call(ide_path + ' ' + project_path)
+        subprocess.Popen(ide_path + ' ' + project_path)
 
     except Exception as e:
         print(e)
