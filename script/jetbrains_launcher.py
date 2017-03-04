@@ -17,21 +17,10 @@ ANDROID_STUDIO_PATH = config['Path']['ANDROID_STUDIO']
 PYCHARM_PATH = config['Path']['PYCHARM']
 
 # Load language resources.
-if LANGUAGE_NUM == '1042':
-    # from language.KO import MSG
-    # DEFAULT_LANG = __import__('language.KO')
-    DEFAULT_LANG = importlib.import_module('language.KO')
-    print('한국어')
-elif LANGUAGE_NUM == '1033':
-    # from language.EN_US import MSG
-    # DEFAULT_LANG = __import__('language.EN_US')
-    DEFAULT_LANG = importlib.import_module('language.EN_US')
-    print('English')
-else:
-    # from language.root import MSG
-    # DEFAULT_LANG = __import__('language.root')
-    DEFAULT_LANG = importlib.import_module('language.root')
-MSG = DEFAULT_LANG.MSG
+if LANGUAGE_NUM == '1042':  LANG_NAME = 'language.KO'
+elif LANGUAGE_NUM == '1033': LANG_NAME = 'language.EN_US'
+else: LANG_NAME = 'language.root'
+MSG = importlib.import_module(LANG_NAME).MSG
 
 
 def is_android_studio_project(path: str) -> bool:
@@ -48,7 +37,6 @@ def is_intellij_project(path: str) -> bool:
     Check if it's a IntelliJ project.
     """
     iml_files = glob.glob(path + '\\*.iml')
-    print(iml_files)
 
     if len(iml_files) > 0:
         fp = open(iml_files[0], 'r')
@@ -65,7 +53,6 @@ def is_pycharm_project(path: str) -> bool:
     Check if it's a Pycharm project.
     """
     iml_files = glob.glob(path + '\\.idea\\*.iml')
-    print(iml_files)
     if len(iml_files) != 0:
         return True
     else: return True
