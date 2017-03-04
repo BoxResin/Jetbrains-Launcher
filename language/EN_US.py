@@ -9,6 +9,7 @@ _LOCAL_MSG = {
     'MENU_TITLE': 'Open with Jetbrains IDE',
 
     # Installer messages
+    'PAGE_PATH_INPUT_TITLE': 'Connecting to Jetbrains IDE',
     'PAGE_PATH_INPUT_SUBTITLE': "Please input the following program's exe file.$\\n" # Use '$\\n' to put a newline.
                                 "The Python Interpreter is essential, others are optional.",
 
