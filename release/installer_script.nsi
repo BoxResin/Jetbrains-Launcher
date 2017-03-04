@@ -21,6 +21,7 @@ SetCompressor lzma
 
 ; MUI Settings
 !define MUI_ABORTWARNING
+!define MUI_CUSTOMFUNCTION_UNGUIINIT "un.myUnOnGuiInit"
 !define MUI_ICON "${NSISDIR}\Contrib\Graphics\Icons\orange-install.ico"
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\orange-uninstall.ico"
 
@@ -136,15 +137,21 @@ Section -Post
 SectionEnd
 
 
+; Uninstaller event handler functions.
 Function un.onUninstSuccess
   HideWindow
-  MessageBox MB_ICONINFORMATION|MB_OK "$(^Name)는(은) 완전히 제거되었습니다."
+  MessageBox MB_ICONINFORMATION|MB_OK $(UNINST_DELETED)
+FunctionEnd
+
+Function un.myUnOnGuiInit
+  MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2 $(UNINST_DELETE_CONFIRM) IDYES +2
+  Abort
 FunctionEnd
 
 Function un.onInit
-!insertmacro MUI_UNGETLANGUAGE
-  MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2 "$(^Name)을(를) 제거하시겠습니까?" IDYES +2
-  Abort
+  !insertmacro MUI_UNGETLANGUAGE
+  ;MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2 $(UNINST_DELETE_CONFIRM) IDYES +2
+  ;Abort
 FunctionEnd
 
 Section Uninstall
