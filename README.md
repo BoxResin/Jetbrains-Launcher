@@ -24,7 +24,7 @@ Choose your language. It supports two languages(`English`, `Korean`) at present.
 ![image](https://cloud.githubusercontent.com/assets/13031505/23579558/473e0b0c-0133-11e7-9227-63f1b27ca7b0.png)<br>
 
 ![image](https://cloud.githubusercontent.com/assets/13031505/23579560/6916313c-0133-11e7-83c4-08985c3b07a9.png)<br>
-Input the `exe` file path of `Python Interpreter`, `IntelliJ`, `Android Studio`, `Pycharm`. Python 3.x should be required because the program is made of `Python` scripts. You can proceed if the `Python Interpreter` path is filled.<br><br><br><br>
+Input the `exe` file path of `Python Interpreter`, `IntelliJ`, `Android Studio`, `Pycharm`. Python 3.x should be required because the program is made of `Python` scripts. You can proceed if the `Python Interpreter` path is filled. To other programs(`IntelliJ`, `Android Studio`, `Pycharm`), set only the path of programs you use. If you remain them blank, those IDE supports will be ignored.<br><br><br><br>
 
 ![image](https://cloud.githubusercontent.com/assets/13031505/23579639/969591c4-0134-11e7-8eb8-04425f4e04f5.png)<br>
 Finally, select a directory you want to install it.<br><br><br><br>
